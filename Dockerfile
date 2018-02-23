@@ -6,7 +6,7 @@ WORKDIR ./webapp/
 
 COPY LICENSE package.json ./
 
-RUN npm install
+RUN npm install --only=production
 
 COPY server.js Gruntfile.js ./
 COPY app ./app/
