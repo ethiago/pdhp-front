@@ -25,7 +25,6 @@ module.exports = function(grunt) {
         jsvendor: {
             dest: "dist/js/vendor.min.js",
             src: [
-                "node_modules/angular/angular.min.js",
                 "node_modules/angular-route/angular-route.min.js",
             ],
 
@@ -64,6 +63,13 @@ module.exports = function(grunt) {
         expand: true,
         src: ["app/**/*.html", "!app/index*.html"],
         dest: "dist/views/",
+        flatten: true,
+        filter: "isFile",
+      },
+      angular:{
+        expand: true,
+        src: "node_modules/angular/angular.min.js",
+        dest: "dist/js/",
         flatten: true,
         filter: "isFile",
       }

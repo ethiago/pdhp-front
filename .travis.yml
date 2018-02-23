@@ -12,9 +12,11 @@ install:
   - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
   - sudo apt-get update -q
   - sudo apt-get install -q google-chrome-stable
+  - npm install -g grunt-cli
 
 before_script:
   - npm install
+  - grunt
 
 script:
   - npm run test-single-run
