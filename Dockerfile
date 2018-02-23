@@ -1,7 +1,5 @@
 FROM node
 
-RUN npm install -g grunt-cli
-
 RUN mkdir -p ./webapp/app
 
 WORKDIR ./webapp/
@@ -13,7 +11,7 @@ RUN npm install
 COPY server.js Gruntfile.js ./
 COPY app ./app/
 
-RUN grunt
+RUN npm run build
 
 EXPOSE 8080
 

@@ -30,8 +30,10 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
+    "build": "grunt default",
     "update-deps": "npm update",
     "start": "node server.js",
+    "herokustart" : "npm run build && npm start",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
