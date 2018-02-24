@@ -8,7 +8,7 @@ COPY LICENSE package.json ./
 
 RUN npm install --only=production
 
-COPY server.js Gruntfile.js ./
+COPY server.js Gruntfile.js extractEnvToAngular.js ./
 COPY app ./app/
 
 RUN npm run build

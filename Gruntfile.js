@@ -26,6 +26,7 @@ module.exports = function(grunt) {
             dest: "dist/js/vendor.min.js",
             src: [
                 "node_modules/angular-route/angular-route.min.js",
+                "node_modules/angular-resource/angular-resource.min.js",
             ],
 
         },

@@ -1,11 +1,13 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('pdhp', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  'pdhp.autoConst',
+  'pdhp.view1',
+  'pdhp.view2',
+  'pdhp.version',
+  'pdhp.apiVersion'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
