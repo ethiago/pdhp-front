@@ -19,7 +19,7 @@ describe('my app', function() {
 
 
     it('should render the view home when user navigates to /home', function() {
-      expect(element.all(by.css('[ng-view] h1')).first().getText()).
+      expect(element.all(by.css('[ng-view] > h1')).first().getText()).
         toMatch(/Wellcome to MyDisks!/);
     });
 
