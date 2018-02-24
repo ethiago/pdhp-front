@@ -1,7 +1,7 @@
 'use strict';
 
 describe('pdhp.version module', function() {
-  beforeEach(module('myApp.version'));
+  beforeEach(module('pdhp.version'));
 
   describe('app-version directive', function() {
     it('should print current version', function() {

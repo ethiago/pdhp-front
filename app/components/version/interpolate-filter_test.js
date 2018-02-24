@@ -1,7 +1,7 @@
 'use strict';
 
 describe('pdhp.version module', function() {
-  beforeEach(module('myApp.version'));
+  beforeEach(module('pdhp.version'));
 
   describe('interpolate filter', function() {
     beforeEach(module(function($provide) {
