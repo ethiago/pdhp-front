@@ -6,21 +6,24 @@
   "repository": "https://github.com/ethiago/pdhp-front",
   "license": "Apache",
   "dependencies": {
-    "express": "^4.16.2",
     "angular": "~1.6.9",
-    "angular-route": "~1.6.9",
+    "angular-animate": "^1.6.9",
+    "angular-aria": "^1.6.9",
     "angular-loader": "~1.6.9",
+    "angular-material": "^1.1.7",
+    "angular-messages": "^1.6.9",
     "angular-mocks": "~1.6.9",
     "angular-resource": "~1.6.9",
-    "html5-boilerplate": "^5.3.0",
-
-    "grunt-cli": "^1.2.0",
+    "angular-route": "~1.6.9",
+    "express": "^4.16.2",
     "grunt": "^1.0.2",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-uglify": "^3.3.0"
+    "grunt-contrib-uglify": "^3.3.0",
+    "html5-boilerplate": "^5.3.0"
   },
   "devDependencies": {
     "http-server": "^0.9.0",
@@ -33,12 +36,12 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
-    "createconst": "node extractEnvToAngular.js", 
+    "createconst": "node extractEnvToAngular.js",
     "build": "grunt default",
     "update-deps": "npm update",
-    "prestart" : "npm run createconst",
+    "prestart": "npm run createconst",
     "start": "node server.js",
-    "herokustart" : "npm run build && npm start",
+    "herokustart": "npm run build && npm start",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",

@@ -27,6 +27,10 @@ module.exports = function(grunt) {
             src: [
                 "node_modules/angular-route/angular-route.min.js",
                 "node_modules/angular-resource/angular-resource.min.js",
+                "node_modules/angular-aria/angular-aria.min.js",
+                "node_modules/angular-messages/angular-messages.min.js",
+                "node_modules/angular-animate/angular-animate.min.js",
+                "node_modules/angular-material/angular-material.min.js"
             ],
 
         },
@@ -73,6 +77,13 @@ module.exports = function(grunt) {
         dest: "dist/js/",
         flatten: true,
         filter: "isFile",
+      },
+      material: {
+        expand: true,
+        src: "node_modules/angular-material/angular-material.min.css",
+        dest: "dist/css/",
+        flatten: true,
+        filter: "isFile"
       }
     },
   });

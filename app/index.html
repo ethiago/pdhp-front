@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="css/angular-material.min.css">
   <link rel="stylesheet" href="css/vendor.min.css">
+  <link rel="stylesheet" href="css/app.min.css">
   <style>
     [ng-cloak] {
       display: none;
     }
   </style>
   <script src="js/angular.min.js"></script>
-  <script src="js/modernizr.min.js"></script>
   <script>
     // include angular loader, which allows the files to load in any order
     //@@NG_LOADER_START@@
@@ -28,6 +31,7 @@
 
     // load all of the dependencies asynchronously.
     $script([
+      'js/modernizr.min.js',
       'js/autoconst.js',
       'js/vendor.min.js',
       'js/app.min.js',
@@ -37,18 +41,18 @@
     });
   </script>
   <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.min.css">
 </head>
 <body ng-cloak>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <api-version></api-version>
+  <div layout="column" layout-fill>
+    <main flex>
+      <div ng-view></div>
+    </main>
+    <footer class="md-caption" md-scroll-shrink>
+      <div layout="row">
+        <span>Code licensed under the Apache License.</span>
+        <api-version></api-version>    
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
