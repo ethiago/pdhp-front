@@ -18,7 +18,7 @@ angular.module('pdhp.apiVersion', ['pdhp.services'])
             }
         );
     }],
-    template: 'Api version: <span>{{metaData.version}}</span>'
+    template: '<span>Api version: <span>{{metaData.version}}</span></span>'
   };
 })
 

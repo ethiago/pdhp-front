@@ -84,6 +84,12 @@ module.exports = function(grunt) {
         dest: "dist/css/",
         flatten: true,
         filter: "isFile"
+      },
+      images: {
+          expand: true,
+          src: "app/images/*",
+          dest: "dist/images",
+          flatten: true
       }
     },
   });

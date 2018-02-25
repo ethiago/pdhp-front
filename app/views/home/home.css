@@ -1,0 +1,24 @@
+#welcome
+{
+    background: rgba(243, 228, 202, 0.56);
+    box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+    padding-top: 50px;
+}
+
+#welcome > img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 180px;
+    height: 180px;
+}
+
+#welcome > h1{
+    font-family: Georgia, Times, "Times New Roman", serif;
+    margin: 10px;
+    margin-top: 25px;
+}
+
+#welcome > h2{
+    margin: 10px;
+}
