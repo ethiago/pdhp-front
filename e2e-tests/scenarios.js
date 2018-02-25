@@ -19,8 +19,11 @@ describe('Disc0!', function() {
 
 
     it('should render the view home when user navigates to /home', function() {
-      expect(element.all(by.css('main h1')).first().getText()).
-        toMatch(/Wellcome to Disc0!/);
+      expect(element.all(by.css('main h1')).first().getText())
+        .toMatch(/Wellcome to Disc0!/);
+
+      expect(element.all(by.css("footer #api-version")).first().getText())
+        .toMatch(/v0.0.0/);
     });
 
   });
