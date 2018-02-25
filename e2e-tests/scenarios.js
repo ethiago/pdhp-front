@@ -23,7 +23,7 @@ describe('Disc0!', function() {
         .toMatch(/Wellcome to Disc0!/);
 
       expect(element.all(by.css("footer #api-version")).first().getText())
-        .toMatch(/v0.0.0/);
+        .toMatch(/0.0.0/);
     });
 
   });
