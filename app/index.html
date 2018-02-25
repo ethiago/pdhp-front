@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/angular-material.min.css">
   <link rel="stylesheet" href="css/vendor.min.css">
   <link rel="stylesheet" href="css/app.min.css">
@@ -45,10 +46,10 @@
 </head>
 <body ng-cloak>
   <div layout="column" layout-fill>
-    <main flex>
+    <main id="pages-wraper" flex>
       <div ng-view></div>
     </main>
-    <footer class="md-caption" md-scroll-shrink>
+    <footer class="md-caption">
       <div layout="row">
         <span>Code licensed under the Apache License.</span>
         <api-version></api-version>    

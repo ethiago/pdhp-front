@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-var mockResponseCollection = { id: 1, name: 'collection', discs:[ { id: 1, name: 'D1'}, { id:2, name: 'D2'} ] };
+var mockResponseCollection = { id: 1, name: 'C1', discs:[ { id: 1, name: 'D1'}, { id:2, name: 'D2'} ] };
 
 app.use(cors())
 

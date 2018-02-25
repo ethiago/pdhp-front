@@ -18,16 +18,18 @@ angular.module('pdhp.collection', ['ngRoute'])
   
 }])
 
-.controller('collectionController', [ '$scope', '$routeParams', 'apiFactory', function($scope, $routeParams, apiFactory) {
+.controller('collectionController', [ '$scope', '$routeParams', '$location', '$window', 'apiFactory', function($scope, $routeParams, $location, $window, apiFactory) {
+
+  $scope.close = function(){
+    $window.history.back();
+  };
 
   var collectionId = Number($routeParams.id);
-
-  console.log($routeParams);
 
   if(!Number.isInteger(collectionId))
   {
     console.log(collectionId + " is not a integer");
-    return false;
+    $window.history.back();
   }
 
   var collection = apiFactory.getCollection($routeParams.id);
@@ -38,6 +40,6 @@ angular.module('pdhp.collection', ['ngRoute'])
       value: obj
     }
   });
-  
+
 }])
 ;
