@@ -10,7 +10,7 @@ angular.module('pdhp.services', ['pdhp.domain'])
       },
 
       "getCollection": function(id){
-        return collectionResource.get(id);
+        return collectionResource.get( {collectionId: id} );
       }
 
     };

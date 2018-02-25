@@ -6,6 +6,7 @@ angular.module('pdhp', [
   'ngMaterial',
   'pdhp.autoConst',
   'pdhp.home',
+  'pdhp.collection',
   'pdhp.apiVersion'
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

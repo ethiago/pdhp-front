@@ -1,12 +1,12 @@
 
 var fs = require('fs');
 
-var parameters = [ "baseUrl" ];
+var parameters = [ { name: "baseUrl", envName:"BASEURL", defaultValue: "http://localhost:3000" } ];
 
 var autoCode = "'use strict';\nangular.module('pdhp.autoConst', [])\n";
 
 parameters.forEach(function(elem){
-    autoCode += ".constant('"+elem+"', '"+ process.env[elem.toUpperCase()] +"')\n"
+    autoCode += ".constant('"+elem.name+"', '"+ (process.env[elem.envName] || elem.defaultValue) +"')\n"
 });
 
 autoCode += ";";

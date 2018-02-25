@@ -20,10 +20,15 @@ angular.module('pdhp.collection', ['ngRoute'])
 
 .controller('collectionController', [ '$scope', '$routeParams', 'apiFactory', function($scope, $routeParams, apiFactory) {
 
-  var collectionId = $routeParams.id;
+  var collectionId = Number($routeParams.id);
+
+  console.log($routeParams);
 
   if(!Number.isInteger(collectionId))
+  {
+    console.log(collectionId + " is not a integer");
     return false;
+  }
 
   var collection = apiFactory.getCollection($routeParams.id);
 

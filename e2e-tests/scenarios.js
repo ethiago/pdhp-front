@@ -2,11 +2,11 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('my app', function() {
+describe('Disc0!', function() {
 
 
   it('should automatically redirect to /home when location hash/fragment is empty', function() {
-    browser.get('index.html');
+    browser.get('/');
     expect(browser.getLocationAbsUrl()).toMatch("/home");
   });
 
@@ -14,7 +14,7 @@ describe('my app', function() {
   describe('home', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/home');
+      browser.get('/#!/home');
     });
 
 

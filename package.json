@@ -40,6 +40,7 @@
     "build": "grunt default",
     "update-deps": "npm update",
     "prestart": "npm run createconst",
+    "mock-backend": "node protractor_backend.js",
     "start": "node server.js",
     "herokustart": "npm run build && npm start",
     "pretest": "npm install",
