@@ -20,7 +20,7 @@ describe('my app', function() {
 
     it('should render the view home when user navigates to /home', function() {
       expect(element.all(by.css('main h1')).first().getText()).
-        toMatch(/Wellcome to Disc0!!/);
+        toMatch(/Wellcome to Disc0!/);
     });
 
   });
