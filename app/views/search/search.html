@@ -1,0 +1,14 @@
+<div id="search-details" layout="column">    
+    <md-toolbar class="md-primary" flex>
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" ng-click="close()">
+                <md-icon>clear</md-icon>
+            </md-button>
+        </div>
+        <pd-search-input></pd-search-input>
+    </md-toolbar>
+    <md-content>
+        <pd-search-result entity="entity.collection"></pd-search-result>
+        <pd-search-result entity="entity.disc"></pd-search-result>
+    </md-content>
+</div>

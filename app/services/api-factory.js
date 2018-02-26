@@ -13,8 +13,9 @@ angular.module('pdhp.services', ['pdhp.domain'])
         return collectionResource.get( {collectionId: id} );
       },
 
-      "search": function(query){
-        return searchResource.query( { q: query, entity: "disc" } ).$promise;
+      "search": function(query, entity){
+        entity = entity || "";
+        return searchResource.query( { q: query, entity: entity } ).$promise;
       }
 
     };

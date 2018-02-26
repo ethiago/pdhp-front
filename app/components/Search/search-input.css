@@ -1,0 +1,4 @@
+.search-input input,
+.search-input input:focus{
+    border: none;
+}
