@@ -11,6 +11,7 @@ module.exports = function(config) {
       'components/**/*.js',
       'domain/**/*.js',
       'services/**/*.js',
+      'tools/**/*.js',
       'view*/**/*.js'
     ],
 

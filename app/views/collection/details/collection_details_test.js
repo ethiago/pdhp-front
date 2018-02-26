@@ -47,7 +47,7 @@ describe('pdhp.collection.details', function() {
 
     it('should define value for collection', function() {
       
-      expect($scope.collection.value).toEqual(mockResponse);
+      expect($scope.collection).toEqual(mockResponse);
       
     });
 
