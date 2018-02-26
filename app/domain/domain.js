@@ -20,4 +20,10 @@ angular.module('pdhp.domain', ['ngResource'])
     
 }])
 
+.factory('discSearchResource', [ '$resource', 'baseUrl', function searchResourceFactory($resource, baseUrl) {
+      
+    return $resource(baseUrl + "/disc/search", null );
+    
+}])
+
 ;

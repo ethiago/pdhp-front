@@ -11,10 +11,11 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
+        compress: false,
         banner: "/*! <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */\n"
       },
       app: {
-        src: ["app/**/*.js", "!app/**/*_test.js"] ,
+        src: ["app/**/*.js", "!app/**/*_test.js"],
         dest: "dist/js/app.min.js",
       },
     },
@@ -42,9 +43,13 @@ module.exports = function(grunt) {
             flatten: true,
             filter: "isFile",
         },
-        target: {
+        app: {
             files: {
                 "dist/css/app.min.css": ["app/**/*.css"],
+            }
+        },
+        vendor:{
+            files: {
                 "dist/css/vendor.min.css": [
                     "node_modules/html5-boilerplate/dist/css/normalize.css",
                     "node_modules/html5-boilerplate/dist/css/main.css",
@@ -92,6 +97,46 @@ module.exports = function(grunt) {
           flatten: true
       }
     },
+    watch: {
+        options: {
+            livereload: true,
+            spawn: false,
+        },
+        gruntfile: {
+          files: 'Gruntfile.js',
+          tasks: ['default'],
+        },
+        appjs: {
+          files: ["app/**/*.js", "!app/**/*_test.js"],
+          tasks: ['uglify'],
+        },
+        appcss:{
+          files: ["app/**/*.css"],
+          tasks: ['cssmin:app'],
+        },
+        index:{
+          files: ["app/index*.html"],
+          tasks: ['copy:index'],   
+        },
+        views:{
+          files: ["app/**/*.html", "!app/index*.html"],
+          tasks: ['copy:views'],  
+        },
+        images:{
+          files: ["app/images/*"],
+          tasks: ['copy:images'], 
+        }
+      },
+      connect:{
+          server:{
+              options:{
+                  hostname: "localhost",
+                  port: "8080",
+                  base: "dist",
+                  livereload: true
+              }
+          }
+      }
   });
 
   grunt.loadNpmTasks("grunt-contrib-uglify");
@@ -99,6 +144,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
   grunt.registerTask("default", ["clean", "uglify", "cssmin", "copy", "concat"]);

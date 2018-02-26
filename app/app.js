@@ -6,7 +6,7 @@ angular.module('pdhp', [
   'ngMaterial',
   'pdhp.autoConst',
   'pdhp.home',
-  'pdhp.collection',
+  'pdhp.collection.details',
   'pdhp.search',
   'pdhp.apiVersion'
 ])
