@@ -11,7 +11,7 @@ describe('pdhp.collection.details', function() {
 
   beforeEach(module('pdhp.collection.details'));
 
-  beforeEach(inject(function(__$rootScope_) {
+  beforeEach(inject(function(_$rootScope_) {
     $rootScope = _$rootScope_;
   }));
 
