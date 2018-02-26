@@ -7,6 +7,7 @@ angular.module('pdhp', [
   'pdhp.autoConst',
   'pdhp.home',
   'pdhp.collection',
+  'pdhp.search',
   'pdhp.apiVersion'
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

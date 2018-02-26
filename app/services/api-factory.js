@@ -2,7 +2,7 @@
 
 angular.module('pdhp.services', ['pdhp.domain'])
 
-.factory('apiFactory', [ 'metaResource', 'collectionResource', function apiFactory(metaResource, collectionResource) {
+.factory('apiFactory', [ 'metaResource', 'collectionResource', 'searchResource', function apiFactory(metaResource, collectionResource, searchResource) {
       
     return {
       "getMeta": function(){
@@ -11,6 +11,10 @@ angular.module('pdhp.services', ['pdhp.domain'])
 
       "getCollection": function(id){
         return collectionResource.get( {collectionId: id} );
+      },
+
+      "search": function(query){
+        return searchResource.query( { q: query, entity: "disc" } ).$promise;
       }
 
     };

@@ -37,10 +37,10 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
-    "createconst": "node extractEnvToAngular.js",
+    "create-const": "node extractEnvToAngular.js",
     "build": "grunt default",
     "update-deps": "npm update",
-    "prestart": "npm run createconst",
+    "prestart": "npm run create-const",
     "mock-backend": "node protractor_backend.js",
     "start": "node server.js",
     "herokustart": "npm run build && npm start",

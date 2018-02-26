@@ -14,4 +14,10 @@ angular.module('pdhp.domain', ['ngResource'])
 
 }])
 
+.factory('searchResource', [ '$resource', 'baseUrl', function searchResourceFactory($resource, baseUrl) {
+      
+    return $resource(baseUrl + "/search", null, {'query': {method: 'GET', isArray: false }});
+    
+}])
+
 ;
