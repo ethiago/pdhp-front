@@ -15,14 +15,28 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   
 }])
 
-.controller('collectionDetailController', [ '$scope', '$routeParams', '$window', 'apiFactory',  function($scope, $routeParams, $window, apiFactory) {
+.controller('collectionDetailController', [ '$scope', '$routeParams', '$window', 'apiFactory', function($scope, $routeParams, $window, apiFactory) {
+
+  var originatorEv;
+
+  this.openMenu = function($mdMenu, ev) {
+    originatorEv = ev;
+    $mdMenu.open(ev);
+
+    console.log("passou");
+  };
 
   $scope.collectionId = 0;
 
   $scope.mode = "list";
 
   $scope.close = function(){
-    $window.history.back();
+    if($scope.mode == 'edit')
+    {
+      $scope.collection.discs = $scope.discsBackup;
+      $scope.mode = 'list';
+    }else
+      $window.history.back();
   };
 
   $scope.collectionId = Number($routeParams.id);
@@ -44,6 +58,26 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   $scope.$on('DiscSelectionCanceled', function(){
     $scope.mode = "list";
   });
+
+  originatorEv = null;
+
+  /**********EDIT*************/
+
+  $scope.edit = function(){
+    $scope.discsBackup = angular.copy( $scope.collection.discs );
+    $scope.mode = 'edit';
+  }
+
+  $scope.remove = function(disc){
+    $scope.collection.discs = $scope.collection.discs.filter(function( e ) { return e.id !== disc.id });
+  }
+
+  $scope.save = function(){
+    $scope.mode = 'list';
+    $scope.collection.$save(function(collection){
+      $scope.collection = collection;
+    });
+  }
 
 }])
 
@@ -68,8 +102,8 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
       $scope.searchText = null;
 
       $scope.collection.discs.push($scope.selectedItem);
-      $scope.collection.$save(function(user){
-        $scope.collection = user;
+      $scope.collection.$save(function(collection){
+        $scope.collection = collection;
         $scope.$emit('DiscSelected', $scope.collection);
       });
     }
