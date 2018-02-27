@@ -21,8 +21,8 @@ describe('pdhp.collection.details', function() {
     mockParam = { id: 0 };
 
     mockapiFactory = {
-      getCollection: function(id) { 
-        return mockResponse;
+      collection: {
+        get: () => mockResponse
       }
     }
     
