@@ -9,11 +9,13 @@ angular.module('pdhp.home', ['ngRoute'])
   });
 }])
 
-.controller('homeController', [ '$scope', '$location',  function($scope, $location) {
+.controller('homeController', [ '$scope', '$location',  function homeController($scope, $location) {
 
   $scope.go = function ( path ) {
     $location.path( path );
   };
+
+  console.log("Value");
 
 }])
 ;
