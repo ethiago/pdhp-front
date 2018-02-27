@@ -17,19 +17,6 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
 
 .controller('collectionDetailController', [ '$scope', '$routeParams', '$window', 'apiFactory', function($scope, $routeParams, $window, apiFactory) {
 
-  var originatorEv;
-
-  this.openMenu = function($mdMenu, ev) {
-    originatorEv = ev;
-    $mdMenu.open(ev);
-
-    console.log("passou");
-  };
-
-  $scope.collectionId = 0;
-
-  $scope.mode = "list";
-
   $scope.close = function(){
     if($scope.mode == 'edit')
     {
@@ -38,17 +25,6 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
     }else
       $window.history.back();
   };
-
-  $scope.collectionId = Number($routeParams.id);
-
-  if(!Number.isInteger($scope.collectionId))
-  {
-    console.log($scope.collectionId + " is not a integer");
-    $window.history.back();
-  }
-  
-
-  $scope.collection = apiFactory.collection.get( {collectionId: $scope.collectionId} );
 
   $scope.$on('DiscSelected', function(event,resource){
     $scope.collection = resource;
@@ -59,7 +35,17 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
     $scope.mode = "list";
   });
 
-  originatorEv = null;
+
+
+  $scope.collectionId = Number($routeParams.id);
+  if(!Number.isInteger($scope.collectionId))
+  {
+    console.log($scope.collectionId + " is not a integer");
+    $window.history.back();
+  }
+  
+  $scope.collection = apiFactory.collection.get( {collectionId: $scope.collectionId} );
+  $scope.mode = "list";
 
   /**********EDIT*************/
 

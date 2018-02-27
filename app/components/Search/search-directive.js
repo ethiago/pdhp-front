@@ -6,7 +6,6 @@ angular.module('pdhp.search.directives', [])
   return {
     restrict: 'E',
     transclude: true,
-    replace: true,
 
     templateUrl: 'views/search-input.html'
   };
@@ -19,7 +18,6 @@ angular.module('pdhp.search.directives', [])
       scope: {
         _: '=entity',
       },
-      replace: true,
 
       controller: ['$scope', '$location', function($scope, $location){
         $scope.listClick = function(item){

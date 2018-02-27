@@ -7,7 +7,6 @@ angular.module('pdhp.apiVersion', ['pdhp.services'])
     restrict: 'E',
     transclude: false,
     scope: {},
-    replace: true,
 
     controller: ['$scope', 'apiFactory', function apiVersionDirectiveController($scope, apiFactory) {
         $scope.metaData = {};
