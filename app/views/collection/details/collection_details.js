@@ -48,7 +48,7 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   }
   
 
-  $scope.collection = apiFactory.getCollection($scope.collectionId);
+  $scope.collection = apiFactory.collection.get( {collectionId: $scope.collectionId} );
 
   $scope.$on('DiscSelected', function(event,resource){
     $scope.collection = resource;
@@ -87,12 +87,11 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   $scope.searchText = null;
 
   $scope.query = function(searchText){
-    return apiFactory.discSearch(searchText).then(function(list){
+    return apiFactory.disc.query({ name: searchText}).$promise.then(function(list){
 
         return nSetSubFilter(list, $scope.collection.discs, function(a,b){
           return a.id === b.id;
-        })
-
+        });
     });
   };
 

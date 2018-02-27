@@ -2,13 +2,18 @@
 
 angular.module('pdhp.domain', ['ngResource'])
 
+.config( [ '$resourceProvider', function($resourceProvider){
+
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+}])
+
 .factory('metaResource', [ '$resource', 'baseUrl', function metaResourceFactory($resource, baseUrl) {
       
     return $resource(baseUrl + "/meta", null);
     
 }])
 
-.factory('collectionResource', ['$resource', 'baseUrl', function collectionResourceFactory($resource, baseUrl){
+.factory('collectionResourceFactory', ['$resource', 'baseUrl', function collectionResourceFactory($resource, baseUrl){
 
     return $resource(baseUrl + "/collection/:collectionId", {collectionId: '@id'});
 
@@ -20,9 +25,9 @@ angular.module('pdhp.domain', ['ngResource'])
     
 }])
 
-.factory('discSearchResource', [ '$resource', 'baseUrl', function searchResourceFactory($resource, baseUrl) {
+.factory('discResourceFactory', [ '$resource', 'baseUrl', function discResourceFactory($resource, baseUrl) {
       
-    return $resource(baseUrl + "/disc/search", null );
+    return $resource(baseUrl + "/disc/:discId", { discId: '@id' });
     
 }])
 
