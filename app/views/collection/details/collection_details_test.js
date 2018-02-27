@@ -37,7 +37,6 @@ describe('pdhp.collection.details', function() {
   describe('collectionDetailController with good param', function(){
 
     beforeEach(function() {
-      queryDeferred.resolve(mockResponse);
       mockParam.id = 1;
       $rootScope.$apply();
     });
