@@ -7,9 +7,9 @@ var mockResposeSearch = {"q":"query","entity":"","page":1,"per_page":10,"discs":
 
 app.use(cors())
 
-app.get('/meta', (req, res) => res.send( { name: "Disc0!", version:"0.0.0"  } ));
-app.get('/collection/*', (req, res) => res.send( mockResponseCollection ));
+app.get('/v1/meta', (req, res) => res.send( { name: "Disc0!", version:"0.0.0"  } ));
+app.get('/v1/collection/*', (req, res) => res.send( mockResponseCollection ));
 
-app.get('/search', (req, res) => res.send(mockResposeSearch));
+app.get('/v1/search', (req, res) => res.send(mockResposeSearch));
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(8000, () => console.log('listening on port 8000!'))

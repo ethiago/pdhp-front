@@ -99,7 +99,6 @@ module.exports = function(grunt) {
     },
     watch: {
         options: {
-            livereload: true,
             spawn: false,
         },
         gruntfile: {
@@ -126,16 +125,6 @@ module.exports = function(grunt) {
           files: ["app/images/*"],
           tasks: ['copy:images'], 
         }
-      },
-      connect:{
-          server:{
-              options:{
-                  hostname: "localhost",
-                  port: "8080",
-                  base: "dist",
-                  livereload: true
-              }
-          }
       }
   });
 
@@ -145,7 +134,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
+
 
   // Default task(s).
   grunt.registerTask("default", ["clean", "uglify", "cssmin", "copy", "concat"]);

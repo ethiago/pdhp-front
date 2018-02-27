@@ -2,18 +2,24 @@
     
     <md-toolbar md-scroll-shrink class="md-primary" flex>
         <div class="md-toolbar-tools" layout="row">
-            <md-button ng-hide="mode === 'add'" class="md-icon-button" ng-click="close()">
+            <md-button ng-class="['md-icon-button', {'md-accent': mode === 'edit'}]" ng-hide="mode === 'add'" ng-click="close()">
                 <md-icon>clear</md-icon>
             </md-button>
             <div flex></div>
-            <md-button class="md-accent md-raised" ng-hide="mode !== 'edit'" ng-click="save()">
+            <md-button class='md-accent' ng-hide="mode !== 'edit'" ng-click="save()">
                 save
             </md-button>
         </div>
         
-        <div class="title-content">
-            <h6 flex>Collection</h6>
-            <h2 flex>{{ collection.name }}</h2>
+        <div class="text-content title-container" ng-hide="mode === 'edit'">
+            <label>Collection</label>
+            <h2 flex >{{ collection.name }}</h2>
+        </div>
+        <div class='text-content'>
+            <md-input-container ng-hide="mode !== 'edit'" class='md-accent'>
+                <label>Collection</label>
+                <input ng-model="collection.name">
+            </md-input-container>
         </div>
         
         <md-subheader class="md-no-sticky" ng-hide="mode === 'add'">Discs</md-subheader>
@@ -31,7 +37,7 @@
                         <h4>{{disc.name}}</h3>
                     </div>
                     <md-menu ng-if="mode === 'edit'">
-                        <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
+                        <md-button class="md-icon-button md-accent" ng-click="$mdMenu.open($event)">
                             <md-icon md-menu-origin >more_vert</md-icon>
                         </md-button>
                         <md-menu-content width="4">
@@ -73,8 +79,8 @@
             
 
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ng-click="cancel()">Cancel</md-button>
-                    <md-button ng-submit ng-click="add()" class="md-warn">Add</md-button>
+                    <md-button class="md-raised" ng-click="cancel()">Cancel</md-button>
+                    <md-button class="md-raised md-primary" ng-submit ng-click="add()">Add</md-button>
                 </md-card-actions>
             </form>
         </md-card>
