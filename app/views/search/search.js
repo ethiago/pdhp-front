@@ -22,7 +22,8 @@ angular.module('pdhp.search', ['ngRoute', 'pdhp.search.directives'])
   
   $scope.entity = {
     disc: {
-      label:"Discs"
+      label: "Discs",
+      route: "/disc/:id/details"
     },
     collection: {
       label: "Collections",

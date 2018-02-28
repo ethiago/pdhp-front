@@ -4,9 +4,6 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
-  .when('/collection/:id', {
-    redirectTo: "/collection/:id/details"
-  })
   .when('/collection/:id/details', {
     templateUrl: 'views/collection_details.html',
     controller: 'collectionDetailController'
@@ -15,26 +12,43 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   
 }])
 
-.controller('collectionDetailController', [ '$scope', '$routeParams', '$window', 'apiFactory', function($scope, $routeParams, $window, apiFactory) {
+.controller('collectionDetailController', [ '$scope', '$routeParams', '$window', 'apiFactory', '$location', '$q', function($scope, $routeParams, $window, apiFactory, $location, $q) {
 
-  $scope.close = function(){
-    if($scope.mode == 'edit')
-    {
-      $scope.collection.discs = $scope.discsBackup;
-      $scope.mode = 'list';
-    }else
-      $window.history.back();
-  };
+  $scope.itemClick = function(disc){
+    $location.path('/disc/'+disc.id+'/details')
+  }
+
+
+  $scope.remove = function(id, item){
+    $scope.collection.discs.splice(id,1);
+  }
+
+  $scope.add = function(){
+    
+    $scope.addDeferred = $q.defer();
+
+    $scope.addMode = true
+
+    return $scope.addDeferred.promise;
+  }
+
+  $scope.cancelAdd = function(){
+    $scope.addMode = false
+    $scope.addDeferred.resolve();
+  }
+    
+
+  $scope.save = function(){
+    return $scope.collection.$save(function(collection){
+      $scope.collection = collection;
+    });
+  }
 
   $scope.$on('DiscSelected', function(event,resource){
     $scope.collection = resource;
-    $scope.mode = "list";
+    $scope.addMode = false
+    $scope.addDeferred.resolve();
   });
-
-  $scope.$on('DiscSelectionCanceled', function(){
-    $scope.mode = "list";
-  });
-
 
 
   $scope.collectionId = Number($routeParams.id);
@@ -44,25 +58,10 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   }
   
   $scope.collection = apiFactory.collection.get( {collectionId: $scope.collectionId} );
-  $scope.mode = "list";
 
-  /**********EDIT*************/
+  $scope.menu = [ { action: $scope.remove, iconName: "clear", displayName: "Remove" } ];
 
-  $scope.edit = function(){
-    $scope.discsBackup = angular.copy( $scope.collection.discs );
-    $scope.mode = 'edit';
-  }
-
-  $scope.remove = function(disc){
-    $scope.collection.discs = $scope.collection.discs.filter(function( e ) { return e.id !== disc.id });
-  }
-
-  $scope.save = function(){
-    $scope.mode = 'list';
-    $scope.collection.$save(function(collection){
-      $scope.collection = collection;
-    });
-  }
+  $scope.addMode = false
 
 }])
 
@@ -91,12 +90,6 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
         $scope.$emit('DiscSelected', $scope.collection);
       });
     }
-  };
-
-  $scope.cancel = function(){
-    $scope.selectedItem = null;
-    $scope.searchText = null;
-    $scope.$emit('DiscSelectionCanceled');
   };
 
 }])
