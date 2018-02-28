@@ -1,0 +1,14 @@
+<pd-page-detail 
+    pd-label="Coll"
+    pd-close="close()"
+    pd-edit="edit()"
+    pd-cancel-edit="cancelEdit()"
+    pd-add="add()"
+    pd-cancel-Add="cancelAdd()"
+    pd-save="save()",
+    pd-model-name="data.name",
+    pd-label-list="lista tasz",
+    pd-model-list="data.list",
+    pd-disable-add="true",
+    pd-menu-list="menu"
+    pd-item-display="name"></pd-page-detail>

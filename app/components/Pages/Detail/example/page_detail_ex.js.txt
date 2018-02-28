@@ -1,0 +1,50 @@
+'use strict';
+
+angular.module('pdhp.ex', ['ngRoute', 'pdhp.pages.detail'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+  .when('/ex', {
+    templateUrl: 'views/ex.html',
+    controller: 'exController'
+  });
+}])
+
+.controller('exController', ['$scope', function exController($scope){
+
+    $scope.close = function(){
+      console.log("close");
+    }
+
+    $scope.cancelEdit = function(){
+      console.log("cancelEdit");
+    }
+
+    $scope.cancelAdd = function(){
+      console.log("cancelEdit");
+    }
+
+    $scope.edit = function(){
+      console.log("edit");
+    }
+
+    $scope.add = function(){
+      console.log("add");
+    }
+
+    $scope.save = function(){
+      console.log("save");
+    }
+
+    $scope.remove = function(item, id){
+      console.log("remove");
+      console.log(item);
+      console.log(id);
+    }
+
+    $scope.data = { name: "Blas", list: [ { name: "A"}, { name: "B"}, { name: "C"} ]}
+    $scope.menu = [ { action: $scope.remove, iconName: "clear", displayName: "Remove" },
+                    { action: null, iconName: "house", displayName: "bla" } ]
+
+
+}])
