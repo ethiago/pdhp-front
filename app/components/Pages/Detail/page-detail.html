@@ -33,11 +33,11 @@
         <md-whiteframe ng-if="labelList" class="md-whiteframe-1dp"  layout layout-align="left center">
             <md-subheader ng-hide="mode === 'add'">{{labelList}}</md-subheader>
         </md-whiteframe>
-        <md-list>
+        <md-list class="md-dense">
             
-            <md-list-item class="md-no-proxy" class="md-1-line" ng-repeat="(id, item) in modelList">
+            <md-list-item ng-click="onItemClick({id:id, item:item})" class="md-1-line md-no-proxy" ng-repeat="(id, item) in modelList">
                 <div class="md-list-item-text" flex>
-                    <h4>{{ itemDisplay? item[itemDisplay] : item}}</h3>
+                    <h3>{{ itemDisplay? item[itemDisplay] : item}}</h3>
                 </div>
                 <md-menu ng-if="menuList" ng-hide="mode !== 'edit'">
                     <md-button class="md-icon-button md-accent" ng-click="$mdMenu.open($event)">
@@ -45,7 +45,7 @@
                     </md-button>
                     <md-menu-content>
                         <md-menu-item ng-repeat="opt in menuList">
-                            <md-button ng-click="opt.action(id, item)">
+                            <md-button ng-click="itemClick(id, item, opt.action)">
                                 <md-icon md-menu-align-target>{{opt.iconName}}</md-icon>
                                 {{opt.displayName}}
                             </md-button>

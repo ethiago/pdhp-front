@@ -40,6 +40,10 @@
     margin-top: 4px;
 }
 
+#page-details md-list-item.md-no-proxy{
+    padding: 0 0;
+}
+
 @media (max-width: 959px) and (min-width: 0) and (orientation: portrait){
     #page-details .md-toolbar-tools {
         height: 35px;

@@ -11,7 +11,7 @@ angular.module('pdhp.pages.detail', [])
       modeBegin: "&pdBeginAs"
       ,label: "@pdLabel"
       ,onCancelEdit: "&pdCancelEdit"
-      ,onCancelAdd: "&pdCancelEdit"
+      ,onCancelAdd: "&pdCancelAdd"
       ,onEdit: "&pdEdit"
       ,onClose: "&pdClose"
       ,onAdd: "&pdAdd"
@@ -24,13 +24,15 @@ angular.module('pdhp.pages.detail', [])
       ,itemDisplay: "@pdItemDisplay"
       ,menuList: "<?pdMenuList"
       ,disableAutoBack: "<?pdDisableAutoBack"
+      ,onItemClick: "&pdItemClick"
     },
 
     controller: [ '$scope', '$q', '$window', function pageDetailController($scope, $q, $window){
 
       $scope.mode = $scope.modeBegin() || 'list'
-      console.log($scope.disableEdit)
       $scope.disableEdit = $scope.disableEdit || false; 
+      $scope.disableAdd = $scope.disableAdd || false; 
+      $scope.disableAutoBack = $scope.disableAutoBack || false;
 
       $scope.modelNameBackup = angular.copy( $scope.modelName );
       $scope.modelListBackup = angular.copy( $scope.modelList );
@@ -58,11 +60,16 @@ angular.module('pdhp.pages.detail', [])
       }
 
       $scope.add = function(){
-        $q.when($scope.onAdd()).then( function() {$scope.mode = 'add' } )
+        $scope.mode = 'add'
+        $q.when($scope.onAdd()).then( function() { $scope.mode = 'list' } )
       }
 
       $scope.save = function(){
         $q.when($scope.onSave()).then( function() {$scope.mode = 'list' } )
+      }
+
+      $scope.itemClick = function(id, item, fn){
+        $q.when( fn(id, item) );
       }
       
     }]
