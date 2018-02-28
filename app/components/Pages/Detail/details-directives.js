@@ -23,6 +23,7 @@ angular.module('pdhp.pages.detail', [])
       ,modelList: "=pdModelList"
       ,itemDisplay: "@pdItemDisplay"
       ,menuList: "<?pdMenuList"
+      ,disableAutoBack: "<?pdDisableAutoBack"
     },
 
     controller: [ '$scope', '$q', '$window', function pageDetailController($scope, $q, $window){
@@ -48,7 +49,7 @@ angular.module('pdhp.pages.detail', [])
         }
         else
         {
-          $q.when($scope.onClose()).then( function() {  $window.history.back() } )
+          $q.when($scope.onClose()).then( function() {  !$scope.disableAutoBack?$window.history.back():null } )
         }
       }
 
