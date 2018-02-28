@@ -31,10 +31,17 @@ angular.module('pdhp.pages.detail', [])
       console.log($scope.disableEdit)
       $scope.disableEdit = $scope.disableEdit || false; 
 
+      $scope.modelNameBackup = angular.copy( $scope.modelName );
+      $scope.modelListBackup = angular.copy( $scope.modelList );
+
       $scope.close = function(mode){
         if($scope.mode == 'edit')
         {
-          $q.when($scope.onCancelEdit()).then( function() { $scope.mode = 'list' } )
+          $q.when($scope.onCancelEdit()).then( function() { 
+            $scope.modelName = $scope.modelNameBackup
+            $scope.modelList = $scope.modelListBackup
+            $scope.mode = 'list' 
+          } )
         }else if($scope.mode == 'add')
         {
           $q.when($scope.onCancelAdd()).then( function() { $scope.mode = 'list' } )
