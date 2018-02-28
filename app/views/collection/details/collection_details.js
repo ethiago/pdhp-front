@@ -40,7 +40,6 @@ angular.module('pdhp.collection.details', ['ngRoute', 'pdhp.tools.filter'])
   $scope.collectionId = Number($routeParams.id);
   if(!Number.isInteger($scope.collectionId))
   {
-    console.log($scope.collectionId + " is not a integer");
     $window.history.back();
   }
   
