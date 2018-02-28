@@ -12,38 +12,11 @@ angular.module('pdhp.disc.details', ['ngRoute', 'pdhp.pages.detail'])
 
 .controller('discDetailController', ['$scope', 'apiFactory', '$routeParams', '$window', function discDetailController($scope, apiFactory, $routeParams, $window){
 
-    $scope.close = function(){
-      console.log("close");
-    }
-
-    $scope.cancelEdit = function(){
-      console.log("cancelEdit");
-    }
-
-    $scope.cancelAdd = function(){
-      console.log("cancelEdit");
-    }
-
-    $scope.edit = function(){
-      console.log("edit");
-    }
-
-    $scope.add = function(){
-      console.log("add");
-    }
-
     $scope.save = function(){
-      console.log("save");
+      $scope.disc.$save(function(disc){
+        $scope.disc = disc;
+      });
     }
-
-    $scope.remove = function(item, id){
-      console.log("remove");
-      console.log(item);
-      console.log(id);
-    }
-
-    $scope.data = { name: "Blas", list: [ { name: "A"}, { name: "B"}, { name: "C"} ]}
-    $scope.menu = [ { action: $scope.remove, iconName: "clear", displayName: "Remove" }]
 
     $scope.discId = Number($routeParams.id);
     if(!Number.isInteger($scope.discId))
