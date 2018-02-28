@@ -10,6 +10,8 @@ angular.module('pdhp', [
   ,'pdhp.search'
   ,'pdhp.apiVersion'
   ,'pdhp.disc.details'
+  ,'pdhp.collection.add'
+  ,'pdhp.disc.add'
 ])
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
