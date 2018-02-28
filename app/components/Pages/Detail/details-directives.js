@@ -25,7 +25,7 @@ angular.module('pdhp.pages.detail', [])
       ,menuList: "<?pdMenuList"
     },
 
-    controller: [ '$scope', '$q', function pageDetailController($scope, $q){
+    controller: [ '$scope', '$q', '$window', function pageDetailController($scope, $q, $window){
 
       $scope.mode = $scope.modeBegin() || 'list'
       console.log($scope.disableEdit)
@@ -48,7 +48,7 @@ angular.module('pdhp.pages.detail', [])
         }
         else
         {
-          $scope.onClose()
+          $q.when($scope.onClose()).then( function() {  $window.history.back() } )
         }
       }
 
