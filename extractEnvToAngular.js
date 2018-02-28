@@ -1,7 +1,7 @@
 
 var fs = require('fs');
 
-var parameters = [ { name: "baseUrl", envName:"BASEURL", defaultValue: "http://localhost:8000/v1" } ];
+var parameters = [ { name: "baseUrl", envName:"API_BASE_URL", defaultValue: "http://localhost:8000/v1" } ];
 
 var autoCode = "'use strict';\nangular.module('pdhp.autoConst', [])\n";
 
